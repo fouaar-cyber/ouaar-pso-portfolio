@@ -1,10 +1,12 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[preprint,12pt,a4paper,authoryear]{elsarticle}
+
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{amsmath,amssymb,amsthm,booktabs,graphicx,algorithm,algpseudocode}
-\usepackage[authoryear,round]{natbib}
 \usepackage{hyperref}
 \usepackage{setspace}
 \usepackage{appendix}
+\usepackage{xcolor}
+
 \onehalfspacing
 
 \newtheorem{theorem}{Theorem}
@@ -12,33 +14,41 @@
 \newtheorem{assumption}{Assumption}
 \newtheorem{remark}{Remark}
 
-\title{Utility-Driven Inertia in Particle Swarm Optimisation: A Reproducible Approach to Higher-Moment Portfolio Selection}
-
-\author{Safia Ouaar$^{a}$ and Fatima Ouaar$^{b}$\\
-	\small $^{a}$Department of Economics, University of Biskra, Algeria\\
-	\small $^{b}$Department of Mathematics, University of Biskra, Algeria\\
-	\small \texttt{f.ouaar@univ-biskra.dz}}
-
-\date{}
+\journal{Borsa Istanbul Review}
 
 \begin{document}
 	
-	\maketitle
-	
-	\begin{abstract}
-		\noindent \textbf{Purpose:} This study proposes a utility-feedback particle swarm optimiser (PSO) that adaptively modulates search persistence using realised portfolio utility, addressing ad-hoc parameter tuning in higher-moment portfolio optimisation.\\
-		\textbf{Design/Methodology/Approach:} We employ shrinkage estimation for covariance matrices and factor-structured higher moments, with utility weights sensitivity analysis. Experiments cover S\&P 500 (2005--2023) and Borsa Istanbul BIST-100 (2010--2023) using block-bootstrap inference.\\
-		\textbf{Findings:} Adaptive PSO achieves modest improvements over fixed-$\omega$ PSO on the S\&P 500 (Sharpe 1.12 vs 1.09). In BIST-100, the 1/N equal-weight benchmark dominates both PSO methods, suggesting that estimation error likely offsets potential gains from optimization. Results are robust to transaction costs up to 15 basis points.\\
-		\textbf{Originality/Value:} We provide open-source reproducible code and demonstrate that utility-feedback mechanisms adaptively modulate search persistence, though their efficacy depends on market development and estimation precision.\\
-		\textbf{Keywords:} Portfolio optimisation; Higher-order moments; Particle swarm optimisation; Utility feedback; Shrinkage estimation; Bootstrap inference\\
-		\textbf{JEL Classification:} G11; C61; C63; C15
-	\end{abstract}
+	\begin{frontmatter}
+		
+		\title{Utility-Driven Inertia in Particle Swarm Optimisation: A Reproducible Approach to Higher-Moment Portfolio Selection}
+		
+		\author[1]{Safia Ouaar}
+		\author[2]{Fatima Ouaar\corref{cor1}}
+		\ead{f.ouaar@univ-biskra.dz}
+		
+		\affiliation[1]{organization={Department of Economics, University of Biskra}, country={Algeria}}
+		\affiliation[2]{organization={Department of Mathematics, University of Biskra}, country={Algeria}}
+		
+		\cortext[cor1]{Corresponding author}
+		
+		\begin{abstract}
+			\noindent \textbf{Purpose:} This study proposes a utility-feedback particle swarm optimiser (PSO) that adaptively modulates search persistence using realised portfolio utility, addressing ad-hoc parameter tuning in higher-moment portfolio optimisation.\\
+			\textbf{Design/Methodology/Approach:} We employ shrinkage estimation for covariance matrices and factor-structured higher moments, with utility weights sensitivity analysis. Experiments cover S\&P 500 (2005--2023) and Borsa Istanbul BIST-100 (2010--2023) using block-bootstrap inference.\\
+			\textbf{Findings:} Adaptive PSO achieves modest improvements over fixed-$\omega$ PSO on the S\&P 500 (Sharpe 1.12 vs 1.09). In BIST-100, the 1/N equal-weight benchmark dominates both PSO methods, suggesting that estimation error likely offsets potential gains from optimization. Results are robust to transaction costs up to 15 basis points.\\
+			\textbf{Originality/Value:} We provide open-source reproducible code and demonstrate that utility-feedback mechanisms adaptively modulate search persistence, though their efficacy depends on market development and estimation precision.
+		\end{abstract}
+		
+		\begin{keyword}
+			Portfolio optimisation \sep Higher-order moments \sep Particle swarm optimisation \sep Utility feedback \sep Shrinkage estimation \sep Bootstrap inference \sep G11 \sep C61 \sep C63 \sep C15
+		\end{keyword}
+		
+	\end{frontmatter}
 	
 	\section{Introduction}
 	
 	Investor preferences have shifted from mean--variance to higher-moment criteria, reflecting recognition that skewness and kurtosis affect portfolio utility \citep{harvey2020conditional,scott1980preference,jonsson2023moment}. However, polynomial goal-programming remains non-convex and estimation-error sensitive \citep{maringer2009global,ledoit2004well}.
 	
-	Meta-heuristics---including particle swarm optimisation (PSO)---offer alternatives to convex relaxations \citep{golmakani2022constrained,zhang2020portfolio}. Yet two gaps persist: (i) inertia weight tuning remains largely ad-hoc \citep{poli2007pso}, and (ii) higher-moment estimation error is rarely addressed \citep{jonsson2023moment}.
+	Meta-heuristics---including particle swarm optimisation (PSO) \citep{eberhart1995pso} ---offer alternatives to convex relaxations \citep{golmakani2022constrained,zhang2020portfolio}. Yet two gaps persist: (i) inertia weight tuning remains largely ad-hoc \citep{poli2007pso}, and (ii) higher-moment estimation error is rarely addressed \citep{jonsson2023moment}.
 	
 	We propose a utility-feedback PSO where inertia responds to realised portfolio utility. Our methodological contributions include: (a) shrinkage-based higher-moment estimation reducing estimation error; (b) sensitivity analysis for utility weights; (c) block-bootstrap inference for performance metrics; and (d) validation on both developed (S\&P 500) and emerging (BIST-100) markets. We provide fully reproducible Python code.
 	
@@ -221,7 +231,6 @@
 		\caption{Cumulative wealth distribution (median and interquartile range across 15 seeds)}\label{fig:wealth}
 	\end{figure}
 	
-	
 	\subsection{Rolling Sharpe Ratio Distribution}
 	
 	Figure~\ref{fig:sharpe_dist} displays the kernel density estimate of rolling 3-month Sharpe ratios across the 15 random seeds. Adaptive PSO exhibits a slightly right-shifted distribution in S\&P 500, consistent with its higher mean Sharpe ratio. In BIST-100, both PSO methods show similar distributions, with the 1/N benchmark (not shown) dominating.
@@ -231,8 +240,7 @@
 		\includegraphics[width=0.9\textwidth]{figure4_sharpe_distribution.pdf}
 		\caption{Distribution of rolling 3-month Sharpe ratios (KDE across 15 seeds)}\label{fig:sharpe_dist}
 	\end{figure}
-
-
+	
 	\subsection{Utility Weight Sensitivity}
 	
 	Figure~\ref{fig:sensitivity} shows performance is maximised at $(\gamma_2,\gamma_3)=(0.5,0.0)$ for S\&P 500 with $\gamma_1=3$ fixed, with Sharpe declining for $\gamma_2>0.75$ (excessive skewness penalty). Note that $\gamma_3=0.05$ mentioned in earlier drafts was not in the grid; the optimum is at $\gamma_3=0$ or $0.25$ depending on $\gamma_2$.
@@ -268,13 +276,14 @@
 	We propose utility-feedback PSO with shrinkage-based higher-moment estimation and provide fully reproducible code. Results demonstrate modest but consistent improvements over fixed-$\omega$ benchmarks in developed markets, though the advantage erodes with transaction costs above 15 bps. In emerging markets (BIST-100), estimation error likely offsets potential gains from optimization, and simple equal-weight or risk-parity strategies outperform. This underscores that the value of sophisticated optimization depends critically on data quality and market development.
 	
 	\textbf{Limitations.} The theoretical analysis provides only heuristic stability guarantees, not convergence proofs. The high BIST-100 Sharpe ratios may reflect survivorship bias and FX effects in the available data. Future work will explore Bayesian shrinkage methods to further reduce estimation error in emerging market applications.
+	
 	\section*{Conflict of Interest}
 	
 	The authors declare no competing interests that could have influenced the work reported in this paper.
 	
 	\section*{Data Availability}
 	
-	All data used in this study are publicly available. S\&P 500 and BIST-100 stock returns were obtained from Yahoo Finance via the \texttt{yfinance} Python library (\url{https://pypi.org/project/yfinance/}). Replication code will be made available at \url{https://github.com/[username]/[repository]} upon paper acceptance.
+	All data used in this study are publicly available. S\&P 500 and BIST-100 stock returns were obtained from Yahoo Finance via the \texttt{yfinance} Python library (\url{https://pypi.org/project/yfinance/}). Replication code is available at \url{https://github.com/fouaar-cyber/ouaar-pso-portfolio}.
 	
 	\section*{Declaration of AI Assistance}
 	
@@ -296,42 +305,9 @@
 		\section{Computational Environment}
 		
 		Experiments ran on standard hardware. Average runtime: approximately 5 minutes per market. Code: Python 3.11, NumPy, scikit-learn, yfinance. Full replication materials available at [repository URL].
-		
 	\end{appendices}
 	
-	\bibliographystyle{apalike}
-	\begin{thebibliography}{20}
-		
-		\bibitem[Eberhart \& Kennedy, 1995]{eberhart1995pso}
-		Eberhart, R., \& Kennedy, J. (1995). A new optimizer using particle swarm theory. In \textit{Proceedings of the IEEE International Symposium on Micro Machine and Human Science} (pp. 39--43). IEEE.
-		
-		\bibitem[Golmakani \& Fazel, 2022]{golmakani2022constrained}
-		Golmakani, H. R., \& Fazel, M. (2022). Constrained PSO for skewness-kurtosis portfolio models: An updated benchmark. \textit{Expert Systems with Applications}, 203, 117129.
-		
-		\bibitem[Harvey \& Siddique, 2020]{harvey2020conditional}
-		Harvey, C. R., \& Siddique, A. (2020). Conditional skewness in asset pricing tests: Twenty-year retrospective. \textit{Journal of Finance}, 76(4), 1821--1852.
-		
-		\bibitem[Jonsson \& Rockinger, 2023]{jonsson2023moment}
-		Jonsson, M., \& Rockinger, M. (2023). Moment component analysis in portfolio selection: A review. \textit{Journal of Banking \& Finance}, 148, 106118.
-		
-		\bibitem[Ledoit \& Wolf, 2004]{ledoit2004well}
-		Ledoit, O., \& Wolf, M. (2004). A well-conditioned estimator for large-dimensional covariance matrices. \textit{Journal of Multivariate Analysis}, 88(2), 365--411.
-		
-		\bibitem[Ledoit \& Wolf, 2008]{ledoit2008robust}
-		Ledoit, O., \& Wolf, M. (2008). Robust performance hypothesis testing with the Sharpe ratio. \textit{Journal of Empirical Finance}, 15(5), 850--859.
-		
-		\bibitem[Maringer \& Parpas, 2009]{maringer2009global}
-		Maringer, D., \& Parpas, P. (2009). Global optimization of higher order moments in portfolio selection. \textit{Journal of Global Optimization}, 43(2--3), 219--230.
-		
-		\bibitem[Poli et al., 2007]{poli2007pso}
-		Poli, R., Kennedy, J., \& Blackwell, T. (2007). Particle swarm optimization: An overview. \textit{Swarm Intelligence}, 1(1), 33--57.
-		
-		\bibitem[Scott \& Horvath, 1980]{scott1980preference}
-		Scott, R. C., \& Horvath, P. A. (1980). On the direction of preference for moments of higher order than the variance. \textit{Journal of Finance}, 35(4), 915--919.
-		
-		\bibitem[Zhang et al., 2020]{zhang2020portfolio}
-		Zhang, Y., Gong, D. W., \& Gao, X. Z. (2020). Portfolio optimization based on multi-objective particle swarm optimization open architecture. \textit{Expert Systems with Applications}, 151, 113371.
-		
-	\end{thebibliography}
+	\bibliographystyle{elsarticle-harv}
+	\bibliography{references}
 	
 \end{document}

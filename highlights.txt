@@ -1,0 +1,7 @@
+Highlights
+
+• Novel utility-feedback PSO with adaptive inertia for portfolio optimization
+• Shrinkage estimation and factor-structured higher moments reduce estimation error
+• Block-bootstrap inference for robust performance evaluation
+• Adaptive PSO improves over fixed-ω in developed markets
+• Simple benchmarks dominate in emerging markets due to estimation error

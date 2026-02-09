@@ -1,0 +1,5 @@
+Data Availability
+
+All data used in this study are publicly available. 
+S&P 500 and BIST-100 stock returns were obtained from Yahoo Finance via the yfinance Python library (https://pypi.org/project/yfinance/). 
+Replication code is available at https://github.com/fouaar-cyber/ouaar-pso-portfolio.

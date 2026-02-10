@@ -1,63 +1,101 @@
 # Utility-Driven Inertia in Particle Swarm Optimisation
 
-Replication code for Ouaar & Ouaar (2025), "Utility-Driven Inertia in Particle Swarm Optimisation: A Reproducible Approach to Higher-Moment Portfolio Selection".
+Replication code for Ouaar & Ouaar (2026), "Utility-Driven Inertia in Particle Swarm Optimisation: A Reproducible Approach to Higher-Moment Portfolio Selection".
+
+## Authors
+
+- Safia Ouaar (Department of Economics, University of Biskra, Algeria)
+- Fatima Ouaar (Department of Mathematics, University of Biskra, Algeria) - Corresponding author: f.ouaar@univ-biskra.dz
+
+## Repository Structure
+
+├── Manuscript Files
+│   ├── main.tex                    # LaTeX manuscript (Emerging Markets Review format)
+│   ├── references.bib              # Bibliography (BibTeX)
+│   ├── main.pdf                    # Compiled PDF
+│   └── cover letter.doc            # Cover letter for submission
+│
+├── Submission Documents
+│   ├── highlights.txt              # Paper highlights (5 bullet points)
+│   ├── author_contributions.txt    # Author contribution statement
+│   ├── conflict_of_interest.txt    # Declaration of competing interests
+│   └── data_availability.txt       # Data availability statement
+│
+├── Figures (PDF)
+│   ├── figure1_sharpe_comparison.pdf
+│   ├── figure2_cumulative_returns.pdf
+│   ├── figure3_omega_evolution.pdf
+│   ├── figure4_sharpe_distribution.pdf
+│   ├── figure5_transaction_cost.pdf
+│   └── sensitivity_heatmap.pdf
+│
+├── Python Code
+│   ├── revised_paper_code.py       # Main PSO algorithm implementation
+│   ├── generate_figures.py         # Figure generation script
+│   ├── performance_table.tex       # LaTeX table output
+│   ├── sensitivity_results.npy     # Sensitivity analysis results
+│   └── summary_statistics.csv      # Summary statistics
+│
+└── Configuration
+├── README.md                   # This file
+├── LICENSE                     # License information
+├── requirements.txt            # Python dependencies
+└── .gitignore                  # Git ignore rules
+Copy
 
 
-## Folder Structure
+## Compilation
 
-ouaar-pso-portfolio/
-├── README.md
-├── LICENSE
-├── requirements.txt
-├── .gitignore
-├── revised_paper_code.py      # Main code
-├── generate_figures.py         # Figure generation
-├── main.tex                    # LaTeX paper
-├── performance_table.tex       # Auto-generated table
-├── data/
-│   ├── summary_statistics.csv
-│   └── sensitivity_results.npy
-└── figures/
-├── figure1_sharpe_comparison.pdf
-├── figure2_cumulative_returns.pdf
-├── figure3_omega_evolution.pdf
-├── figure4_sharpe_distribution.pdf
-├── figure5_transaction_cost.pdf
-└── sensitivity_heatmap.pdf
+To compile the LaTeX manuscript:
 
-## Requirements
+```bash
+pdflatex main.tex
+bibtex main
+pdflatex main.tex
+pdflatex main.tex
 
-- Python 3.11+
-- NumPy, pandas, scikit-learn, yfinance, matplotlib, seaborn
+## Data Availability
+All data used in this study are publicly available:
 
-## Install dependencies:
+    S&P 500: Yahoo Finance via yfinance Python library
+    BIST-100: Yahoo Finance via yfinance Python library (ticker format .IS)
 
+## Replication code: Python 3.11, NumPy, pandas, scikit-learn, matplotlib, yfinance
+Installation
+Install dependencies:
+bash
 pip install -r requirements.txt
 
-## Running the Code:
-
+## Running the Code
+Run main analysis:
+bash
 python revised_paper_code.py
 
 ## Generate figures:
-
+bash
 python generate_figures.py
 
-##  Data
-
+## Data
 S&P 500 and BIST-100 data are downloaded automatically via yfinance. No manual data download required.
 
-##  Output
+## Output
 
     summary_statistics.csv — Performance metrics
     performance_table.tex — LaTeX results table
     figure*.pdf — All paper figures
     sensitivity_heatmap.pdf — Utility weight sensitivity
 
-##  Citation: If using this code, please cite:
+## Citation
+If using this code, please cite:
 
 Ouaar, S., & Ouaar, F. (2025). Utility-Driven Inertia in Particle Swarm Optimisation: 
 A Reproducible Approach to Higher-Moment Portfolio Selection. 
-[Journal name], [Volume], [Pages].
+Emerging Markets Review.
 
-##  License
-MIT License — feel free to use and modify with attribution.
+## Contact
+For questions or issues, please contact:
+
+    Fatima Ouaar: f.ouaar@univ-biskra.dz
+    GitHub Issues: https://github.com/fouaar-cyber/ouaar-pso-portfolio/issues
+
+

@@ -4,16 +4,16 @@ Replication code for Ouaar & Ouaar (2026), "Utility-Driven Inertia in Particle S
 
 ## Authors
 
-- Safia Ouaar (Department of Economics, University of Biskra, Algeria)
 - Fatima Ouaar (Department of Mathematics, University of Biskra, Algeria) - Corresponding author: f.ouaar@univ-biskra.dz
+- Safia Ouaar (Department of Economics, University of Biskra, Algeria)
 
 ## Repository Structure
 
 ├── Manuscript Files
-│   ├── main.tex                    # LaTeX manuscript (Emerging Markets Review format)
+│   ├── Ouaar paper.tex                    # LaTeX manuscript (Emerging Markets Review format)
 │   ├── references.bib              # Bibliography (BibTeX)
-│   ├── main.pdf                    # Compiled PDF
-│   └── cover letter.doc            # Cover letter for submission
+│   ├── Ouaar paper.pdf                    # Compiled PDF
+│   
 │
 ├── Submission Documents
 │   ├── highlights.txt              # Paper highlights (5 bullet points)
@@ -41,7 +41,6 @@ Replication code for Ouaar & Ouaar (2026), "Utility-Driven Inertia in Particle S
 ├── LICENSE                     # License information
 ├── requirements.txt            # Python dependencies
 └── .gitignore                  # Git ignore rules
-Copy
 
 
 ## Compilation
@@ -90,7 +89,7 @@ If using this code, please cite:
 
 Ouaar, S., & Ouaar, F. (2025). Utility-Driven Inertia in Particle Swarm Optimisation: 
 A Reproducible Approach to Higher-Moment Portfolio Selection. 
-Emerging Markets Review.
+
 
 ## Contact
 For questions or issues, please contact:

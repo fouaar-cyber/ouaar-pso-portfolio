@@ -48,10 +48,10 @@ Replication code for Ouaar & Ouaar (2026), "Utility-Driven Inertia in Particle S
 To compile the LaTeX manuscript:
 
 ```bash
-pdflatex main.tex
-bibtex main
-pdflatex main.tex
-pdflatex main.tex
+pdflatex Ouaar paper.tex
+bibtex Ouaar paper
+pdflatex Ouaar paper.tex
+pdflatex Ouaar paper.tex
 
 ## Data Availability
 All data used in this study are publicly available:

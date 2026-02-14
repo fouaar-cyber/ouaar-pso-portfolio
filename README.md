@@ -10,7 +10,7 @@ Replication code for Ouaar & Ouaar (2026), "Utility-Driven Inertia in Particle S
 ## Repository Structure
 
 ├── Manuscript Files
-│   ├── Ouaar paper.tex                    # LaTeX manuscript (Emerging Markets Review format)
+│   ├── Ouaar paper.tex                    # LaTeX manuscript
 │   ├── references.bib              # Bibliography (BibTeX)
 │   ├── Ouaar paper.pdf                    # Compiled PDF
 │   

@@ -1,0 +1,38 @@
+
+## CITATION.cff 
+
+```yaml
+cff-version: 1.2.0
+message: "If you use this software, please cite both the software and the paper."
+type: software
+title: "Utility-Driven Inertia in Particle Swarm Optimisation: Replication Code"
+abstract: "Replication code for utility-feedback particle swarm optimizer with adaptive inertia weight adjustment for higher-moment portfolio selection. Includes shrinkage covariance estimation, factor-structured higher moments, and block-bootstrap inference."
+authors:
+  - family-names: "Ouaar"
+    given-names: "Safia"
+    affiliation: "Department of Economics, University of Biskra, Algeria"
+  - family-names: "Ouaar"
+    given-names: "Fatima"
+    affiliation: "Department of Mathematics, University of Biskra, Algeria"
+    email: "f.ouaar@univ-biskra.dz"
+repository-code: "https://github.com/fouaar-cyber/ouaar-pso-portfolio"
+license: MIT
+version: 1.0.0
+date-released: 2026-03-02
+keywords:
+  - particle swarm optimisation
+  - portfolio optimization
+  - higher moments
+  - shrinkage estimation
+  - bootstrap inference
+  - reproducible research
+preferred-citation:
+  type: software
+  title: "Utility-Driven Inertia in Particle Swarm Optimisation: Replication Code"
+  authors:
+    - family-names: "Ouaar"
+      given-names: "Safia"
+    - family-names: "Ouaar"
+      given-names: "Fatima"
+  year: 2026
+  repository-code: "https://github.com/fouaar-cyber/ouaar-pso-portfolio"
